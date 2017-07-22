@@ -1,51 +1,40 @@
 {
-    "name": "racing_game",
-    "description": "Small dice game where the goal is to get your car over the finnish line before anyone else does.",
-    "keywords": [
-        "websocket",
-        "websockets",
-        "socket",
-        "game"
-    ],
-    "author": "Anders Åkerö <anders@akero.eu> (https://www.akero.eu)",
-    "contributors": [
-    ],
-    "version": "0.0.1",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/anders-akero/racing_game.git"
-    },
-    "homepage": "https://github.com/anders-akero/racing_game",
-    "engines": {
-        "node": ">=0.8.0"
-    },
-    "dependencies": {
-        "debug": "^2.2.0",
-        "nan": "^2.3.3",
-        "typedarray-to-buffer": "^3.1.2",
-        "yaeti": "^0.0.6"
-    },
-    "devDependencies": {
-        "buffer-equal": "^1.0.0",
-        "faucet": "^0.0.1",
-        "gulp": "git+https://github.com/gulpjs/gulp.git#4.0",
-        "gulp-jshint": "^2.0.4",
-        "jshint-stylish": "^2.2.1",
-        "jshint": "^2.0.0",
-        "tape": "^4.0.1"
-    },
-    "config": {
-        "verbose": true
-    },
-    "scripts": {
-        "install": "(node-gyp rebuild 2> builderror.log) || (exit 0)",
-        "test": "faucet test/unit",
-        "gulp": "gulp"
-    },
-    "main": "racing_game",
-    "directories": {
-        "lib": "./lib"
-    },
-    "browser": "lib/browser.js",
-    "license": "Apache-2.0"
+  "name": "racing_game",
+  "version": "0.0.1",
+  "description": "A multiplayer game where you take turn to role a dice. The winner is the one who firsts cross the finish line",
+  "main": "app.js",
+  "dependencies": {
+    "gith": "^1.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodejs app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/anders-akero/racing_game",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anders-akero/racing_game.git"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "keywords": [
+    "game",
+    "multiplayer",
+    "racing",
+    "aakero",
+    "akero"
+  ], 
+  "config": {
+    "verbose": true
+  },
+  "author": "Anders Åkerö <anders@akero.eu> (https://www.akero.eu)",
+  "contributors": [
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/anders-akero/racing_game/issues"
+  }
 }
+
