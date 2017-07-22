@@ -4,7 +4,8 @@
   "description": "A multiplayer game where you take turn to role a dice. The winner is the one who firsts cross the finish line",
   "main": "app.js",
   "dependencies": {
-    "gith": "^1.0.4"
+    "gith": "^1.0.4",
+    "sprintf-js": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {
