@@ -5,9 +5,14 @@ function Die(sizes = 6) {
 }
 
 // class methods
-Die.prototype.role = function () {
-    return Math.floor(Math.random() * this.sizes) + 1;
+Die.prototype.roll = function () {
+    this.result = Math.floor(Math.random() * this.sizes) + 1;
 };
+
+Die.prototype.getResult = function() {
+    return this.result;
+}
 
 // export the class
 module.exports = Die;
+

@@ -1,4 +1,9 @@
-var Die = require('./model/Die');
+var Player = require('./model/Player');
 
-var die = new Die();
-console.log('Rolling the dice. Result is: ' + die.role());
+var player1 = new Player({name: 'Anders'});
+var player2 = new Player({name: 'Mireille'});
+player2.changeName('Michelle');
+
+player1.roll();
+player2.roll();
+
