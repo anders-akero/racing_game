@@ -8,7 +8,7 @@ var Player = function (data) {
         '%s joins the game',
         this.data.name
     ));
-}
+};
 
 Player.prototype.data = {};
 
@@ -16,7 +16,7 @@ Player.prototype.sanitize = function (data) {
     data = data || {};
     structure = {name: 'Unknown'};
     return _.pick(_.defaults(data, structure), _.keys(structure));
-}
+};
 
 Player.prototype.changeName = function (name) {
     console.log(sprintf(
@@ -25,18 +25,21 @@ Player.prototype.changeName = function (name) {
         name
     ));
     this.data.name = name;
-}
+    return true;
+};
 
 Player.prototype.get = function (name) {
+    if(typeof this.data[name] === 'undefined') {
+        throw new ReferenceError('Unknown property: ' + name);
+    }
     return this.data[name];
-}
+};
 
 Player.prototype.set = function (name, value) {
+    if(typeof this.data[name] === 'undefined') {
+        throw new ReferenceError('Unknown property: ' + name);
+    }
     this.data[name] = value;
-}
-
-Player.prototype.getName = function () {
-    return this.data.name;
 };
 
 Player.prototype.roll = function () {
@@ -45,10 +48,11 @@ Player.prototype.roll = function () {
 
     console.log(sprintf(
         '%1$s roll the die. Result is: %2$d',
-        this.getName(),
+        this.get('name'),
         die.getResult()
     ));
-}
+    return die.getResult();
+};
 
 module.exports = Player;
 
