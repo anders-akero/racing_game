@@ -7,10 +7,14 @@
     "gith": "^1.0.4",
     "sprintf-js": "^1.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3"
+  },
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc --reporter=html --reporter=text mocha --timeout=50"
   },
   "homepage": "https://github.com/anders-akero/racing_game",
   "repository": {
@@ -26,16 +30,14 @@
     "racing",
     "aakero",
     "akero"
-  ], 
+  ],
   "config": {
     "verbose": true
   },
   "author": "Anders Åkerö <anders@akero.eu> (https://www.akero.eu)",
-  "contributors": [
-  ],
+  "contributors": [],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/anders-akero/racing_game/issues"
   }
 }
-
