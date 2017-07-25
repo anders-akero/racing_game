@@ -10,7 +10,7 @@ The goal of the game is to be the first over the finnish line.
 * NodeJS version 6+
 ## Written in 
 * npm version 3.10.10
-* NodeJS versino 6.11.1
+* NodeJS version 6.11.1
 
 # Install
 ```
