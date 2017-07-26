@@ -6,11 +6,11 @@ A fairly simple online boardgame where the players take turn to role a dice to s
 The goal of the game is to be the first over the finnish line.
 
 # Requirements
-* npm version 3.10+
-* NodeJS version 6+
+* npm version 5.0+
+* NodeJS version 8.0.0+
 ## Written in 
-* npm version 3.10.10
-* NodeJS version 6.11.1
+* npm version 5.3.0
+* NodeJS version 8.2.1
 
 # Install
 ```
