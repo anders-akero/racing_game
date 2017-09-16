@@ -22,6 +22,7 @@ describe('Die', function () {
             expect(result).to.equal(1);
         });
     });
+
     describe('#getResult()', function () {
         it('should return the last result', function () {
             var die = new Die(6);
