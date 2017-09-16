@@ -26,6 +26,10 @@ class Player {
         this.data.name = name;
     }
 
+    get name() {
+        return this.data.name;
+    }
+
     roll() {
         var die = new Die();
         die.roll();

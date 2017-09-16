@@ -24,17 +24,16 @@ describe('Player', function () {
         describe('changing name', function () {
             it('should change the value', function () {
                 var player = new Player();
-                var prevName = player.data.name;
+                var prevName = player.name;
                 player.name = 'Kjell';
-                var newName = player.data.name;
-                expect(newName).not.to.equal(prevName);
+                expect(player.name).not.to.equal(prevName);
             });
         });
         describe('validating new name', function () {
             it('should change the value', function () {
                 var player = new Player();
                 player.name = 'Kjell';
-                expect(player.data.name).to.be.a('string').that.equal('Kjell');
+                expect(player.name).to.be.a('string').that.equal('Kjell');
             });
         });
     });
