@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "nyc --reporter=html --reporter=text mocha --timeout=50"
+    "test": "nyc --reporter=html --reporter=text mocha --watch --timeout=50"
   },
   "homepage": "https://github.com/anders-akero/racing_game",
   "repository": {
