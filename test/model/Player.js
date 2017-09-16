@@ -20,6 +20,7 @@ describe('Player', function () {
             expect(player.data).to.be.an('object').that.have.property('name').but.not.property('winner');
         });
     });
+
     describe('Changing name', function () {
         describe('changing name', function () {
             it('should change the value', function () {
@@ -37,6 +38,7 @@ describe('Player', function () {
             });
         });
     });
+
     describe('#roll()', function () {
         describe('player rolls the die', function () {
             it('should print to console', function () {
