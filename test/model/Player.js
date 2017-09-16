@@ -20,19 +20,12 @@ describe('Player', function () {
             expect(player.data).to.be.an('object').that.have.property('name').but.not.property('winner');
         });
     });
-    describe('#changeName()', function () {
-        describe('return value', function () {
-            it('should return true', function () {
-                var player = new Player();
-                var result = player.changeName('Kjell');
-                expect(result).to.be.true;
-            });
-        });
+    describe('Changing name', function () {
         describe('changing name', function () {
             it('should change the value', function () {
                 var player = new Player();
                 var prevName = player.data.name;
-                player.changeName('Kjell');
+                player.name = 'Kjell';
                 var newName = player.data.name;
                 expect(newName).not.to.equal(prevName);
             });
@@ -40,7 +33,7 @@ describe('Player', function () {
         describe('validating new name', function () {
             it('should change the value', function () {
                 var player = new Player();
-                player.changeName('Kjell');
+                player.name = 'Kjell';
                 expect(player.data.name).to.be.a('string').that.equal('Kjell');
             });
         });
@@ -52,39 +45,6 @@ describe('Player', function () {
                 var result = player.roll();
                 expect(result).to.be.a('number');
                 expect(result).to.be.oneOf([1, 2, 3, 4, 5, 6]);
-            });
-        });
-    });
-    describe('#get()', function () {
-        describe('attribute name', function () {
-            it('should return the name of the player', function () {
-                var player = new Player();
-                expect(player.get('name')).to.be.a('string');
-            });
-        });
-        describe('invalid attribute', function () {
-            it('should throw exception', function () {
-                var player = new Player();
-                expect(function () {
-                    player.get('foo');
-                }).to.throw(ReferenceError);
-            });
-        });
-    });
-    describe('#set()', function () {
-        describe('attribute name', function () {
-            it('should change the name of the player', function () {
-                var player = new Player();
-                player.set('name', 'Kjell');
-                expect(player.data.name).to.be.a('string').that.equal('Kjell');
-            });
-        });
-        describe('invalid attribute', function () {
-            it('should throw exception', function () {
-                var player = new Player();
-                expect(function () {
-                    player.set('foo', 'bar');
-                }).to.throw(ReferenceError);
             });
         });
     });

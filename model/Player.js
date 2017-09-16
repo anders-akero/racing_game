@@ -17,28 +17,13 @@ class Player {
         return _.pick(_.defaults(data, structure), _.keys(structure));
     }
 
-    changeName(name) {
+    set name(name) {
         console.log(sprintf(
             'Player "%s" changed name to "%s"',
             this.data.name,
             name
         ));
         this.data.name = name;
-        return true;
-    }
-
-    get(name) {
-        if (typeof this.data[name] === 'undefined') {
-            throw new ReferenceError('Unknown property: ' + name);
-        }
-        return this.data[name];
-    }
-
-    set(name, value) {
-        if (typeof this.data[name] === 'undefined') {
-            throw new ReferenceError('Unknown property: ' + name);
-        }
-        this.data[name] = value;
     }
 
     roll() {
@@ -47,7 +32,7 @@ class Player {
 
         console.log(sprintf(
             '%1$s roll the die. Result is: %2$d',
-            this.get('name'),
+            this.data.name,
             die.getResult()
         ));
         return die.getResult();
