@@ -23,6 +23,9 @@ class Board {
         if (!(player instanceof Player)) {
             throw new Error('player must be of instance Player');
         }
+        if (this._isStarted) {
+            throw new Error('A new player can not be added to an active game');
+        }
         this._players.push(player);
     }
 

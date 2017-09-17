@@ -2,7 +2,6 @@
 /* jshint expr: true */
 var expect = require('chai').expect;
 
-var Board = require('./../../model/Board');
 var Game = require('./../../model/Game');
 var Player = require('./../../model/Player');
 
@@ -31,6 +30,17 @@ describe('Game', function () {
                     game.addPlayer({});
                 };
                 expect(addingAnInvalidPlayer).to.throw(Error, 'player must be of instance Player');
+            });
+        });
+        describe('to an active game', function () {
+            it('should throw an exception', function () {
+                var addingPlayersToAnActiveGame = function () {
+                    var game = new Game;
+                    game.addPlayer(new Player);
+                    game.start();
+                    game.addPlayer(new Player);
+                };
+                expect(addingPlayersToAnActiveGame).to.throw(Error, 'A new player can not be added to an active game');
             });
         });
         describe('single player', function () {
