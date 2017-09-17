@@ -1,14 +1,14 @@
 /* global require, describe, it, __filename */
 /* jshint expr: true */
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
-var Game = require('./../../model/Game');
-var Player = require('./../../model/Player');
+const Game = require('./../../model/Game');
+const Player = require('./../../model/Player');
 
 describe('Game', function () {
     describe('#constructor()', function () {
         it('should create a game with a default name and no players', function () {
-            var game = new Game;
+            const game = new Game;
             expect(game.name).to.be.a('string').that.equal('My racing track');
             expect(game.players).to.be.an('array').that.is.of.length(0);
         });
@@ -16,7 +16,7 @@ describe('Game', function () {
 
     describe('magic set name', function () {
         it('should return the name with the first character as uppercase', function () {
-            var game = new Game;
+            const game = new Game;
             game.name = 'new gamename';
             expect(game.name).to.be.a('string').that.equal('New gamename');
         });
@@ -25,8 +25,8 @@ describe('Game', function () {
     describe('#addPlayer', function () {
         describe('invalid player', function () {
             it('should throw an exception', function () {
-                var addingAnInvalidPlayer = function () {
-                    var game = new Game;
+                let addingAnInvalidPlayer = function () {
+                    const game = new Game;
                     game.addPlayer({});
                 };
                 expect(addingAnInvalidPlayer).to.throw(Error, 'player must be of instance Player');
@@ -34,8 +34,8 @@ describe('Game', function () {
         });
         describe('to an active game', function () {
             it('should throw an exception', function () {
-                var addingPlayersToAnActiveGame = function () {
-                    var game = new Game;
+                let addingPlayersToAnActiveGame = function () {
+                    const game = new Game;
                     game.addPlayer(new Player);
                     game.start();
                     game.addPlayer(new Player);
@@ -45,8 +45,8 @@ describe('Game', function () {
         });
         describe('single player', function () {
             it('should add the new player to the game', function () {
-                var game = new Game;
-                var player1 = new Player;
+                const game = new Game;
+                const player1 = new Player;
                 game.addPlayer(player1);
                 expect(game.players).to.be.an('array').that.include(player1);
                 expect(game.players.length).to.equal(1);
@@ -54,10 +54,10 @@ describe('Game', function () {
         });
         describe('multiple player', function () {
             it('should add the new players to the game', function () {
-                var game = new Game;
-                var player1 = new Player;
-                var player2 = new Player;
-                var player3 = new Player;
+                const game = new Game;
+                const player1 = new Player;
+                const player2 = new Player;
+                const player3 = new Player;
                 game.addPlayer(player1);
                 game.addPlayer(player2);
                 game.addPlayer(player3);
@@ -73,8 +73,8 @@ describe('Game', function () {
     describe('#start', function () {
         describe('without any players', function () {
             it('should throw an exception', function () {
-                var startingWithoutPlayers = function () {
-                    var game = new Game;
+                let startingWithoutPlayers = function () {
+                    const game = new Game;
                     game.start();
                 };
                 expect(startingWithoutPlayers).to.throw(Error, 'No players found');
@@ -82,8 +82,8 @@ describe('Game', function () {
         });
         describe('starting the game twice', function () {
             it('should throw an exception', function () {
-                var startingWithoutPlayers = function () {
-                    var game = new Game;
+                let startingWithoutPlayers = function () {
+                    const game = new Game;
                     game.addPlayer(new Player);
                     game.start();
                     game.start();
@@ -93,8 +93,8 @@ describe('Game', function () {
         });
         describe('starting the game correctly', function () {
             it('should not throw an exception', function () {
-                var startingOnceWithOnePlayer = function () {
-                    var game = new Game;
+                let startingOnceWithOnePlayer = function () {
+                    const game = new Game;
                     game.addPlayer(new Player);
                     game.start();
                 };

@@ -1,22 +1,22 @@
 /* global require, describe, it, __filename */
 /* jshint expr: true */
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
-var Player = require('./../../model/Player');
+const Player = require('./../../model/Player');
 
 describe('Player', function () {
     describe('#constructor()', function () {
         it('should sanitize input to be name and only name', function () {
-            var player = new Player();
+            let player = new Player();
             expect(player.data).to.be.an('object').that.have.property('name');
 
-            var player = new Player({name: 'Kjell'});
+            player = new Player({name: 'Kjell'});
             expect(player.data).to.be.an('object').that.have.property('name');
 
-            var player = new Player({winner: true});
+            player = new Player({winner: true});
             expect(player.data).to.be.an('object').that.have.property('name').but.not.property('winner');
 
-            var player = new Player({name: 'Kjell', winner: true});
+            player = new Player({name: 'Kjell', winner: true});
             expect(player.data).to.be.an('object').that.have.property('name').but.not.property('winner');
         });
     });
@@ -24,15 +24,15 @@ describe('Player', function () {
     describe('Changing name', function () {
         describe('changing name', function () {
             it('should change the value', function () {
-                var player = new Player();
-                var prevName = player.name;
+                const player = new Player();
+                let prevName = player.name;
                 player.name = 'Kjell';
                 expect(player.name).not.to.equal(prevName);
             });
         });
         describe('validating new name', function () {
             it('should change the value', function () {
-                var player = new Player();
+                const player = new Player();
                 player.name = 'Kjell';
                 expect(player.name).to.be.a('string').that.equal('Kjell');
             });
@@ -42,8 +42,8 @@ describe('Player', function () {
     describe('#roll()', function () {
         describe('player rolls the die', function () {
             it('should print to console', function () {
-                var player = new Player();
-                var result = player.roll();
+                const player = new Player();
+                let result = player.roll();
                 expect(result).to.be.a('number');
                 expect(result).to.be.oneOf([1, 2, 3, 4, 5, 6]);
             });
