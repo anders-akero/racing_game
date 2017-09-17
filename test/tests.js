@@ -6,5 +6,6 @@
  */
 require('./model/Board');
 require('./model/Die');
+require('./model/Game');
 require('./model/Player');
 
