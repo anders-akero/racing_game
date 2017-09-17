@@ -1,6 +1,6 @@
-var _ = require("lodash");
-var Die = require('./Die');
-var sprintf = require("sprintf-js").sprintf;
+const _ = require("lodash");
+const Die = require('./Die');
+const sprintf = require("sprintf-js").sprintf;
 
 class Player {
     constructor(data) {
@@ -13,7 +13,7 @@ class Player {
 
     _sanitize(data) {
         data = data || {};
-        var structure = {name: 'Unknown'};
+        const structure = {name: 'Unknown'};
         return _.pick(_.defaults(data, structure), _.keys(structure));
     }
 
@@ -31,7 +31,7 @@ class Player {
     }
 
     roll() {
-        var die = new Die();
+        const die = new Die();
         die.roll();
 
         console.log(sprintf(

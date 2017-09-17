@@ -1,4 +1,4 @@
-var Player = require('./Player');
+const Player = require('./Player');
 
 class Board {
     constructor() {
