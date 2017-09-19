@@ -2,6 +2,7 @@
 /* jshint expr: true */
 const expect = require('chai').expect;
 
+const Board = require('./../../model/Board');
 const Game = require('./../../model/Game');
 const Player = require('./../../model/Player');
 
@@ -19,6 +20,13 @@ describe('Game', function () {
             const game = new Game;
             game.name = 'new gamename';
             expect(game.name).to.be.a('string').that.equal('New gamename');
+        });
+    });
+
+    describe('magic get board', function () {
+        it('should return the current board that the game is using', function () {
+            const game = new Game;
+            expect(game.board).to.be.an.instanceof(Board);
         });
     });
 

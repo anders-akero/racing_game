@@ -1,10 +1,12 @@
+const Board = require('./Board');
 const Player = require('./Player');
 
-class Board {
+class Game {
     constructor() {
         this.name = 'my racing track';
         this._players = [];
         this._isStarted = false;
+        this._board = new Board;
     }
 
     set name(name) {
@@ -13,6 +15,10 @@ class Board {
 
     get name() {
         return this._name;
+    }
+
+    get board() {
+        return this._board;
     }
 
     get players() {
@@ -30,7 +36,6 @@ class Board {
     }
 
     start() {
-        console.log(this._isStarted);
         if (this._isStarted) {
             throw new Error('The game is already running');
         }
@@ -41,5 +46,5 @@ class Board {
     }
 }
 
-module.exports = Board;
+module.exports = Game;
 
