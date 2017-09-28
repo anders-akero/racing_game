@@ -47,7 +47,7 @@ console.log(sprintf(
     'Starting "%s" with %d player%s',
     game.name,
     game.players.length,
-    game.players.length > 1? 's' : ''
+    game.players.length > 1 ? 's' : ''
 ));
 console.log(sprintf(
     '"%s" will be using the board "%s"',
@@ -56,11 +56,59 @@ console.log(sprintf(
 ));
 
 console.log(sprintf(
-    '%1$s roll the die. Result is: %2$d\n' +
-    '%3$s roll the die. Result is: %4$d',
+    'The game has started, we are now waiting for %s to roll the die',
+    player1.name
+));
+
+game.roll(player1);
+console.log(sprintf(
+    '%s moved to position %d',
     player1.name,
-    player1.roll(),
+    player1.position
+));
+
+console.log(sprintf(
+    'Waiting for %s to roll the die',
+    player2.name
+));
+
+game.roll(player2);
+console.log(sprintf(
+    '%s moved to position %d',
     player2.name,
-    player2.roll()
+    player2.position
+));
+
+while (player1.position < 50 && player2.position < 50) {
+    game.roll(player1);
+    console.log(sprintf(
+        '%s moved to position %d',
+        player1.name,
+        player1.position
+    ));
+    game.roll(player2);
+    console.log(sprintf(
+        '%s moved to position %d',
+        player2.name,
+        player2.position
+    ));
+}
+
+console.log(sprintf(
+    '\n' +
+    'The game has ended, here is the result:\n' +
+    '%1$s is at position %2$d\n' +
+    '%3$s is at position %4$d\n' +
+    'The winner is %5$s\n',
+    player1.name,
+    player1.position,
+    player2.name,
+    player2.position,
+    function () {
+        if (player1.position === player2.position) {
+            return 'Noone, it is a tie';
+        }
+        return player1.position > player2.position ? player1.name : player2.name;
+    }
 ));
 

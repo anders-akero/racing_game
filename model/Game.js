@@ -26,9 +26,7 @@ class Game {
     }
 
     addPlayer(player) {
-        if (!(player instanceof Player)) {
-            throw new Error('player must be of instance Player');
-        }
+        this._assertPlayer(player);
         if (this._isStarted) {
             throw new Error('A new player can not be added to an active game');
         }
@@ -36,12 +34,38 @@ class Game {
     }
 
     start() {
+        this._assertHasPlayers();
         if (this._isStarted) {
             throw new Error('The game is already running');
         }
         this._isStarted = true;
+    }
+
+    roll(player) {
+        this._assertStarted();
+        this._assertPlayer(player);
+        let dieResult = player.roll();
+        player.position = player.position + dieResult;
+    }
+
+    _assertStarted() {
+        if (!this._isStarted) {
+            throw new Error('The game must be started');
+        }
+    }
+    _assertHasPlayers() {
         if (!this._players.length) {
             throw new Error('No players found');
+        }
+    }
+
+    /**
+     * @param Player player
+     * @private
+     */
+    _assertPlayer(player){
+        if (!(player instanceof Player)) {
+            throw new Error('Must be of instance Player');
         }
     }
 }

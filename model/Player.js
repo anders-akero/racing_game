@@ -4,6 +4,7 @@ const Die = require('./Die');
 class Player {
     constructor(data) {
         this.data = this._sanitize(data);
+        this._position = 0;
     }
 
     _sanitize(data) {
@@ -24,6 +25,28 @@ class Player {
         const die = new Die();
         die.roll();
         return die.getResult();
+    }
+
+    set position(newPosition) {
+        this._assertInteger(newPosition);
+        this._position = newPosition;
+    }
+
+    get position() {
+        return this._position;
+    }
+
+    /**
+     * Assert that value is of type integer
+     * @param {int} value
+     * @private
+     */
+    _assertInteger(value) {
+        if (!(!isNaN(value) && (function (x) {
+                return (x | 0) === x;
+            })(parseFloat(value)))) {
+            throw new Error('Must be integer');
+        }
     }
 }
 
