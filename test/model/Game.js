@@ -37,7 +37,7 @@ describe('Game', function () {
                     const game = new Game;
                     game.addPlayer({});
                 };
-                expect(addingAnInvalidPlayer).to.throw(Error, 'player must be of instance Player');
+                expect(addingAnInvalidPlayer).to.throw(Error, 'Must be of instance Player');
             });
         });
         describe('to an active game', function () {
@@ -107,6 +107,43 @@ describe('Game', function () {
                     game.start();
                 };
                 expect(startingOnceWithOnePlayer).not.to.throw();
+            });
+        });
+    });
+
+    describe('#roll', function () {
+        describe('without starting the game', function () {
+            it('should throw an exception', function () {
+                let rollingWithoutStartingTheGame = function () {
+                    const game = new Game;
+                    const player = new Player;
+                    game.addPlayer(player);
+                    game.roll(player);
+                };
+                expect(rollingWithoutStartingTheGame).to.throw(Error, 'The game must be started');
+            });
+        });
+        describe('with invalid player starting the game', function () {
+            it('should throw an exception', function () {
+                let rollingWithInvalidPlayer = function () {
+                    const game = new Game;
+                    const player = new Player;
+                    game.addPlayer(player);
+                    game.start();
+                    game.roll({foo: 'bar'});
+                };
+                expect(rollingWithInvalidPlayer).to.throw(Error, 'Must be of instance Player');
+            });
+        });
+        describe('with valid player in a started game', function () {
+            it('should move the player position', function () {
+                const game = new Game;
+                const player = new Player;
+                game.addPlayer(player);
+                game.start();
+                let beforeRolling = player.position;
+                game.roll(player);
+                expect(player.position).to.be.greaterThan(beforeRolling);
             });
         });
     });
