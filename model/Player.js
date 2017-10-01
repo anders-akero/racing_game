@@ -42,9 +42,7 @@ class Player {
      * @private
      */
     _assertInteger(value) {
-        if (!(!isNaN(value) && (function (x) {
-                return (x | 0) === x;
-            })(parseFloat(value)))) {
+        if (parseInt(value) !== value) {
             throw new Error('Must be integer');
         }
     }
