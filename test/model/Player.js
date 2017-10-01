@@ -84,8 +84,8 @@ describe('Player', function () {
 
     describe('#roll()', function () {
         describe('player rolls the die', function () {
-            it('should print to console', function () {
-                const player = new Player
+            it('should return an integer between 1 and 6', function () {
+                const player = new Player;
                 let result = player.roll();
                 expect(result).to.be.a('number');
                 expect(result).to.be.oneOf([1, 2, 3, 4, 5, 6]);

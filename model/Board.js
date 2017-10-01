@@ -6,6 +6,10 @@ class Board {
     get name() {
         return this._name;
     }
+
+    get positionOfFinishLine() {
+        return 50;
+    }
 }
 
 module.exports = Board;

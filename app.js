@@ -79,19 +79,15 @@ console.log(sprintf(
     player2.position
 ));
 
-while (player1.position < 50 && player2.position < 50) {
-    game.roll(player1);
+while (game.isActive) {
+    let player = game.currentPlayer;
+    game.roll(player);
     console.log(sprintf(
         '%s moved to position %d',
-        player1.name,
-        player1.position
+        player.name,
+        player.position
     ));
-    game.roll(player2);
-    console.log(sprintf(
-        '%s moved to position %d',
-        player2.name,
-        player2.position
-    ));
+    game.playerIsDone = true;
 }
 
 console.log(sprintf(
@@ -104,11 +100,6 @@ console.log(sprintf(
     player1.position,
     player2.name,
     player2.position,
-    function () {
-        if (player1.position === player2.position) {
-            return 'Noone, it is a tie';
-        }
-        return player1.position > player2.position ? player1.name : player2.name;
-    }
+    game.winner.name
 ));
 
