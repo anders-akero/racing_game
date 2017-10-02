@@ -87,7 +87,6 @@ while (game.isActive) {
         player.name,
         player.position
     ));
-    game.playerIsDone = true;
 }
 
 console.log(sprintf(
