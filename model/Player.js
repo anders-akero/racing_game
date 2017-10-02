@@ -2,36 +2,58 @@ const _ = require("lodash");
 const Die = require('./Die');
 
 class Player {
-    constructor(data) {
+    /**
+     * @param {object} data
+     */
+    constructor(data = {}) {
         this.data = this._sanitize(data);
         this._position = 0;
     }
 
+    /**
+     * @param {object} data
+     * @returns {object}
+     * @private
+     */
     _sanitize(data) {
-        data = data || {};
         const structure = {name: 'Unknown'};
         return _.pick(_.defaults(data, structure), _.keys(structure));
     }
 
+    /**
+     * @param {string} name
+     */
     set name(name) {
         this.data.name = name;
     }
 
+    /**
+     * @returns {string}
+     */
     get name() {
         return this.data.name;
     }
 
+    /**
+     * @returns {int}
+     */
     roll() {
         const die = new Die();
         die.roll();
-        return die.getResult();
+        return die.result;
     }
 
+    /**
+     * @param {int} newPosition
+     */
     set position(newPosition) {
         this._assertInteger(newPosition);
         this._position = newPosition;
     }
 
+    /**
+     * @returns {int}
+     */
     get position() {
         return this._position;
     }

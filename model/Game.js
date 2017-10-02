@@ -11,22 +11,37 @@ class Game {
         this._currentPlayerId = 0;
     }
 
+    /**
+     * @param {string} name
+     */
     set name(name) {
         this._name = name.charAt(0).toUpperCase() + name.slice(1);
     }
 
+    /**
+     * @returns {string}
+     */
     get name() {
         return this._name;
     }
 
+    /**
+     * @returns {Board}
+     */
     get board() {
         return this._board;
     }
 
+    /**
+     * @returns {Array}
+     */
     get players() {
         return this._players;
     }
 
+    /**
+     * @param {Player} player
+     */
     addPlayer(player) {
         this._assertPlayer(player);
         if (this._isStarted) {
@@ -35,6 +50,9 @@ class Game {
         this._players.push(player);
     }
 
+    /**
+     * Marking the game as started
+     */
     start() {
         this._assertHasPlayers();
         if (this._isStarted) {
@@ -43,12 +61,17 @@ class Game {
         this._isStarted = this._isActive = true;
     }
 
+    /**
+     * @param {Player} player
+     */
     roll(player) {
         this._assertStarted();
         this._assertActive();
         this._assertPlayer(player);
         let dieResult = player.roll();
         player.position = player.position + dieResult;
+        this.board.playerMoved(player);
+
         if (player.position >= this.board.positionOfFinishLine) {
             this._winningPlayer = player;
             this._isActive = false;
@@ -75,22 +98,37 @@ class Game {
         return this._winningPlayer;
     }
 
+    /**
+     * @returns {boolean}
+     */
     get isActive() {
         return this._isActive;
     }
 
+    /**
+     * @throws Error
+     * @private
+     */
     _assertStarted() {
         if (!this._isStarted) {
             throw new Error('The game must be started');
         }
     }
 
+    /**
+     * @throws Error
+     * @private
+     */
     _assertActive() {
         if (!this._isActive) {
             throw new Error('The game is not active');
         }
     }
 
+    /**
+     * @throws Error
+     * @private
+     */
     _assertHasPlayers() {
         if (!this._players.length) {
             throw new Error('No players found');
@@ -98,7 +136,7 @@ class Game {
     }
 
     /**
-     * @param Player player
+     * @param {Player} player
      * @private
      */
     _assertPlayer(player) {

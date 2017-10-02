@@ -20,11 +20,11 @@ describe('Die', function () {
         });
     });
 
-    describe('#getResult()', function () {
+    describe('magic get result', function () {
         it('should return the last result', function () {
             const die = new Die(6);
             let resultFromRoll = die.roll();
-            expect(die.getResult()).to.equal(resultFromRoll);
+            expect(die.result).to.equal(resultFromRoll);
         });
     });
 });

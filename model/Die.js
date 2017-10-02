@@ -1,20 +1,26 @@
 class Die {
+    /**
+     * @param {int} sizes
+     */
     constructor(sizes = 6) {
-        // always initialize all instance properties
         this.sizes = sizes;
     }
 
-    // class methods
+    /**
+     * @returns {int}
+     */
     roll() {
-        this.result = (Math.floor(Math.random() * this.sizes) + 1);
-        return this.result;
+        this._result = (Math.floor(Math.random() * this.sizes) + 1);
+        return this._result;
     }
 
-    getResult() {
-        return this.result;
+    /**
+     * @returns {int}
+     */
+    get result() {
+        return this._result;
     }
 }
 
-// export the class
 module.exports = Die;
 
